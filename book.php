@@ -61,7 +61,8 @@
                 </li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <!-- <li><a href="booking.html">Book Online</a></li> -->
+                <li><a href="manage.php">Manage Pass</a></li>
+                  <li><a href="bus_details.html">Bus Details</a></li>
               </ul>
             </nav>
           </div>
@@ -122,6 +123,14 @@
               <div class="row form-group">
                 
                 <div class="col-md-12">
+                  <label class="text-black" for="Number">Enter your Password</label> 
+                  <input required name="password" type="password" class="form-control">
+                </div>
+              </div>
+
+              <div class="row form-group">
+                
+                <div class="col-md-12">
                   <label class="text-black" for="Date">Valid Till</label> 
                   <input required name="date" type="date" id="date" class="form-control">
                 </div>
@@ -161,7 +170,7 @@
           <div class="col-lg-4">
             <div class="mb-5">
               <h3 class="footer-heading mb-4">About Travelers</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe pariatur reprehenderit vero atque, consequatur id ratione, et non dignissimos culpa? Ut veritatis, quos illum totam quis blanditiis, minima minus odio!</p>
+              <p>Provides student a pass for their daily life to travel to/from GLA University, Mathura</p>
             </div>
 
             

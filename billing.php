@@ -7,8 +7,10 @@
         $contact = $_POST['contact'];
         $date = $_POST['date'];
         $dest = $_POST['dest'];
+        $password = $_POST['password'];
      	
-        $query = mysql_query("insert into pass(name, email, contact, date, dest) values ('$name', '$email', '$contact', '$date', '$dest')");
+        $query = mysql_query("insert into pass(name, email, contact, date, dest, password) values ('$name', '$email', '$contact', '$date', '$dest', '$password')");
+		$lid = mysql_insert_id();
 		
 		$nod = round((strtotime($date) - time())/(60*60*24))+1;
 		$result = mysql_query("select price from destination where name = '$dest'");
@@ -73,7 +75,8 @@
                 </li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <!-- <li><a href="booking.html">Book Online</a></li> -->
+                <li><a href="manage.php">Manage Pass</a></li>
+                  <li><a href="bus_details.html">Bus Details</a></li>
               </ul>
             </nav>
           </div>
@@ -187,7 +190,7 @@ span.price {
 
             <div class="col-md-8" data-aos="fade-up" data-aos-delay="400">
               <h1 class="text-white font-weight-light">Book Your Pass</h1>
-              <div><a href="index.html">Home</a> <span class="mx-2 text-white">&bullet;</span> <span class="text-white">Pass</span></div>
+              <div><a href="index.html">Home</a> <span class="mx-2 text-white">&bullet;</span> <span class="text-white">Payment</span></div>
               
             </div>
           </div>
@@ -199,7 +202,7 @@ span.price {
     <div class="row" style="margin-right: auto; margin-left: auto">
   <div class="col-75">
     <div class="container">
-      <form action="/action_page.php">
+      <form action="invoice.php" method="post">
 
         <div class="row">
           <div class="col-50">
@@ -218,24 +221,26 @@ span.price {
 				?>
 			  </div>
             </div>
+			<input type="hidden" value="<?php echo $lid ?>" name="id">
+			<input type="hidden" value="<?php echo $amt ?>" name="amt">
             <label for="cname">Name on Card</label>
-            <input type="text" id="cname" name="cardname" placeholder="Name">
+            <input type="text" id="cname" name="cardname" value="<?php echo $name; ?>" required>
             <label for="ccnum">Card number</label>
-            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
+            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444" required>
 
             <div class="row">
               <div class="col-50">
                 <label for="expyear">Exp Year</label>
-                <input type="text" id="expyear" name="expyear" placeholder="YYYY">
+                <input type="text" id="expyear" name="expyear" placeholder="YYYY" required>
               </div>
                 
                 <div class="col-50">
                 <label for="expmonth">Exp Month</label>
-            <input type="text" id="expmonth" name="expmonth" placeholder="MM">
+            <input type="text" id="expmonth" name="expmonth" placeholder="MM" required>
                 </div>
               </div>
               <label for="cvv">CVV</label>
-                <input type="password" id="cvv" name="cvv" placeholder="***">
+                <input type="password" id="cvv" name="cvv" placeholder="***" required>
           </div>
 
         </div>
@@ -253,7 +258,7 @@ span.price {
           <div class="col-lg-4">
             <div class="mb-5">
               <h3 class="footer-heading mb-4">About Travelers</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe pariatur reprehenderit vero atque, consequatur id ratione, et non dignissimos culpa? Ut veritatis, quos illum totam quis blanditiis, minima minus odio!</p>
+              <p>Provides student a pass for their daily life to travel to/from GLA University, Mathura</p>
             </div>
 
             
